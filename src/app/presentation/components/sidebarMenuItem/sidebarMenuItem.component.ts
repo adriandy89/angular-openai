@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-@Component({
+@Component( {
   selector: 'app-sidebar-menu-item',
   standalone: true,
-  imports: [RouterModule],
+  imports: [
+    RouterModule,
+  ],
   template: `
     <a
       [routerLink]="path"
@@ -16,13 +18,18 @@ import { RouterModule } from '@angular/router';
         <span class="text-white text-lg font-semibold">{{ title }}</span>
         <span class="text-gray-400 text-sm">{{ description }}</span>
       </div>
+
     </a>
+
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-})
+} )
 export class SidebarMenuItemComponent {
+
   @Input({ required: true }) icon!: string;
   @Input({ required: true }) title!: string;
   @Input({ required: true }) description!: string;
   @Input({ required: true }) path!: string;
+
+
 }

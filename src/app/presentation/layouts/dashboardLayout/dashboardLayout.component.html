@@ -5,20 +5,20 @@
     <h1
       class="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 bg-clip-text text-transparent"
     >
-      Angular GPT
+      AngularGPT<span class="text-indigo-500">.</span>
     </h1>
-    <!-- <span class="text-xl">Bienvenido</span> -->
+    <span class="text-xl">Bienvenido</span>
 
     <div class="border-gray-700 border my-3"></div>
 
     <!-- Nav Links -->
     @for (route of routes; track route.path) {
-    <app-sidebar-menu-item
-      [description]="route.data!['description']"
-      [icon]="route.data!['icon']"
-      [title]="route.data!['title']"
-      [path]="route.path!"
-    />
+      <app-sidebar-menu-item
+        [description]="route.data!['description']"
+        [icon]="route.data!['icon']"
+        [title]="route.data!['title']"
+        [path]="route.path!"
+      />
 
     }
     <!-- End Nav Links -->
