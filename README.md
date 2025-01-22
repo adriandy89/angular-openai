@@ -10,3 +10,9 @@ Steps to run in dev:
 1. Install dependencies with `npm install`
 2. Run `ng serve` to start the development server.
 3. Navigate to `http://localhost:4200/`
+
+![Image Description](web.jpg)
+
+
+## Backend Repo:
+`https://github.com/adriandy89/nest-openai`
