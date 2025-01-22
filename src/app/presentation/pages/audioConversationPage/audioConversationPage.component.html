@@ -1,0 +1,32 @@
+<div class="chat-container">
+  <div class="chat-messages">
+    <div class="grid gap-y-2">
+      <!-- Chat Messages -->
+      <app-chat-message
+        text="Let's practice your english communication skills. Tell me something"
+      />
+
+      @for (message of messages(); track $index) { @if( message.isGpt ) {
+      <app-chat-message [text]="message.text" [audioUrl]="message.audioUrl" />
+      } @else {
+      <app-my-message [text]="message.text" />
+      } } @if (isLoading()) {
+      <app-typing-loader />
+      }
+    </div>
+  </div>
+  <button
+    class="text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition-all focus:outline-none"
+    (mousedown)="startRecording()"
+    (mouseup)="stopRecording()"
+    (mouseleave)="stopRecording()"
+    [disabled]="isLoading()"
+    [ngClass]="{ 'bg-red-500': isRecording(), 'bg-blue-500': !isRecording() }"
+  >
+    @if (isLoading()) {
+    <span class="animate-pulse text-gray-300">Loading...</span>
+    } @else { @if (isRecording()) {
+    <span class="animate-pulse">Recording...</span>
+    } @else { <span>Hold to Record </span>} }
+  </button>
+</div>
