@@ -110,6 +110,18 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'audio-conversation',
+        loadComponent: () =>
+          import(
+            './presentation/pages/audioConversationPage/audioConversationPage.component'
+          ),
+        data: {
+          icon: 'fa-solid fa-user',
+          title: 'Profesor',
+          description: 'Asistente de Inglés',
+        },
+      },
+      {
         path: '**',
         redirectTo: 'orthography',
         pathMatch: 'full',

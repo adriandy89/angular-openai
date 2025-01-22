@@ -10,6 +10,7 @@ import {
   imageVariationUseCase,
   createThreadUseCase,
   postQuestionUseCase,
+  audioToAudioUseCase,
 } from '@use-cases/index';
 import { Observable, from, of, tap } from 'rxjs';
 
@@ -39,6 +40,10 @@ export class OpenAiService {
     return from(audioToTextUseCase(file, prompt));
   }
 
+  audioToAudio(audioBlob: Blob, threadId: string) {
+    return from(audioToAudioUseCase(audioBlob, threadId));
+  }
+
   imageGeneration(prompt: string, originalImage?: string, maskImage?: string) {
     return from(imageGenerationUseCase(prompt, originalImage, maskImage));
   }
@@ -47,14 +52,14 @@ export class OpenAiService {
     return from(imageVariationUseCase(originalImage));
   }
 
-  createThread(): Observable<string> {
-    if (localStorage.getItem('thread')) {
-      return of(localStorage.getItem('thread')!);
+  createThread(id: string, audio: boolean): Observable<string> {
+    if (localStorage.getItem(id)) {
+      return of(localStorage.getItem(id)!);
     }
 
-    return from(createThreadUseCase()).pipe(
+    return from(createThreadUseCase(audio)).pipe(
       tap((thread) => {
-        localStorage.setItem('thread', thread);
+        localStorage.setItem(id, thread);
       })
     );
   }
